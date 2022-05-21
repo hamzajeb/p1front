@@ -1,0 +1,9 @@
+.a{
+    position: relative;
+    margin: auto;
+    text-align: center;
+    width: 800px;
+    box-shadow: 0 8px 16px #dce1e1;border-radius: 15px;
+    margin-top: 30vh;
+    height: 40vh;
+  }

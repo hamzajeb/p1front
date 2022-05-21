@@ -1,0 +1,52 @@
+<app-nav-bar></app-nav-bar>
+<br>
+<mat-grid-list cols="3" rowHeight="800px" [gutterSize]="'20px'" style="margin-top: 30vh;">
+    <mat-grid-tile *ngFor="let Produit of listeProduit">
+        <!-- <div style="margin:0 35vw;margin-bottom: 200px;"> -->
+            <mat-card class="card"  style="width: 25vw ;">
+            
+                
+                <mat-card-content class="card-main" style="height: 70vh;">
+                  <!-- <p class="discount">10%</p> -->
+                  <div class="product-container">
+                        <div class="p"  (mouseover)="changImage($event,Produit)"><img  src="{{imageDirectorypath}}{{Produit.image1}}" ></div>
+                        <div class="p"  (mouseover)="changImage($event,Produit)"><img  src="{{imageDirectorypath}}{{Produit.image2}}"></div>
+                        <div class="p"  (mouseover)="changImage($event,Produit)"><img  src="{{imageDirectorypath}}{{Produit.image3}}" ></div>
+                  </div>
+                  <div class="image" >
+                      <img mat-card-image  *ngIf="test==true;else x" src="{{imageDirectorypath}}{{Produit.image1}}" style="height: 70vh;object-fit: cover;object-position: center top;">
+                      <ng-template #x>
+                        <img mat-card-image *ngIf="Produit.chrono_hour==0;else x1"  src="{{imageDirectorypath}}{{Produit.image1}}" style="height: 70vh;object-fit: cover;object-position: center top;">
+                      </ng-template>
+                      <ng-template #x1>
+                        <img mat-card-image  src="{{Produit.chrono_hour}}" style="height: 70vh;object-fit: cover;object-position: center top;">
+                      </ng-template>
+                      
+                  </div>
+                  <div class="cart-item" style="width:27vw;margin-left:-15px">
+                      <ul >
+                          <li><a class='a' href="" style="width: 50%;text-align:center"><mat-icon style="font-size: 30px;display:inline-block;
+                            vertical-align: middle;line-height: normal;margin-bottom:13px ;">favorite</mat-icon></a></li>
+                          <li><a class='b' href="" style="width: 50%;text-align:center"><mat-icon style="font-size: 30px;display:inline-block;
+                            vertical-align: middle;line-height: normal;margin-bottom:13px ;">shopping_basket</mat-icon></a></li>
+                      </ul>
+                  </div>
+                </mat-card-content>
+                <mat-card-actions >
+                    <div class="x" style="text-align:center;font-family: 'Lobster', cursive;font-size: 25px;">{{Produit.nom}}</div>
+                    <br>
+                    <p style="text-align:center;font-size: 14px;">{{Produit.detail}}</p>
+                    <div style="text-align: center;">
+                      <button mat-icon-button style="color: gold;"  *ngFor="let r of ratingArr;index as i" (click)="onClick(i)">
+                        <mat-icon>{{returnStar(i)}}</mat-icon>
+                      </button>
+                    </div>
+                    <br>
+                    <p style="text-align:center;font-weight: bold;font-size: 18px;">{{Produit.prix}} MAD</p>
+                    <!-- <div>{{rating}}</div> -->
+                </mat-card-actions>
+              </mat-card>
+            <!-- </div> -->
+        </mat-grid-tile>
+
+  </mat-grid-list>

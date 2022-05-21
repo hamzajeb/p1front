@@ -1,0 +1,52 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<app-nav-admin></app-nav-admin>
+
+<br>
+<br>
+<br>
+<br>
+<h1 style="text-align:center;font-family: 'Oleo Script Swash Caps';font-size: 30px">Catégories</h1>
+<div style="float:right;margin-bottom: 20px;margin-right: 10vw;">
+  <button type="button" style="font-size: 18px;padding: 8px;"  mat-raised-button (click)="openModal(template)">Ajouter Catégorie</button>
+</div>
+<table  class="table table-hover" style="width:70vw;margin-left: 15vw;margin-top: 90px;">
+ 
+ 
+      <tr style="text-align:center">
+        <th scope="col">Id_catégorie</th>
+        <th scope="col">Nom_catégorie</th>
+        <th scope="col">Action</th>
+      </tr>
+    
+      <tr style="text-align:center" *ngFor="let categorie of listeCategories">
+        
+        <td>{{categorie.id}}</td>
+        <td>{{categorie.nom}}</td>
+        <td style="width:70%;">
+          <button  style="margin-right:12px" class="btn btn-info" (click)="openModal(template,categorie)">Modifier </button>
+          <button  class="btn btn-warning" (click)="deleteCategorie(categorie.id)">Supprimer</button>
+        </td>
+     
+      <tr>
+   
+  </table>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 style="font-weight: bold;text-align: center;font-size:20px" class="modal-title pull-left">{{titreModal}}</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    
+    <div class="modalBody">
+      <div class="form-group" style="margin-left: 30px;margin-top: 10px;">
+        <label style="font-weight: bold;font-size:15px">Nom du catégorie</label>
+        <input style="width:30vw" type="text" class="form-control" placeholder="Entrez le nom du catégorie " [formControl]="nom">
+        <button type="button" class="btn btn-dark" style="margin-top:20px;float:right;margin-right:50px;margin-bottom:20px" (click)="InsertCategorie()">{{titre}}</button>
+      </div>
+    </div>
+  </ng-template>
+
+  

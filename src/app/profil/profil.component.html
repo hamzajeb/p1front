@@ -1,0 +1,29 @@
+<app-nav-bar></app-nav-bar>
+<br>
+<div style="font-family: 'Oleo Script Swash Caps';padding: 0 90px;" class="a">
+    <br>
+    <p style="display:block;font-size: 30px;text-align:center;font-family: 'Oleo Script Swash Caps'">Mon Profile</p>
+    <p  *ngIf="profile==0;else vide" style="display:block;font-size: 20px;text-align:center;font-family: 'Oleo Script Swash Caps'">vous êtes notre client depuis {{date}}</p>
+    <ng-template #vide><p style="display:block;"></p></ng-template>
+    <br>
+    <div>
+    <p style="display:inline-block;font-size: 20px;text-align: left;width: 50%;">Nom : {{nom}}</p>
+    <p style="display:inline-block;font-size: 20px;text-align: right;width: 50%;">Prenom : {{prenom}}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <br>
+    <div>
+        <p style="display:inline-block;font-size: 20px;text-align: left;width: 50%;">Email : {{email}}</p>
+        <p *ngIf="profile==0;else admin" style="display:inline-block;font-size: 20px;text-align: right;width: 50%;">Profile : Client</p>
+        <ng-template #admin>
+            <p style="display:inline-block;font-size: 20px;text-align: right;width: 50%;">Profile : Admin</p>
+        </ng-template>
+    </div>
+    <mat-divider></mat-divider> 
+    <br>
+    <div>
+        <p style="display:inline-block;font-size: 20px;text-align: left;width: 50%;">Ville : {{ville}}</p>
+        <p style="display:inline-block;font-size: 20px;text-align: right;width: 50%;">Telephone : {{telephone}}</p>
+        </div>
+    <mat-divider></mat-divider>    
+</div>
